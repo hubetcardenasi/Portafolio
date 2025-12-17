@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional - Desarrollo de bases de datos y sistemas de software">
+    <title>Portafolio Profesional | HCI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">HCI<span class="logo-dot">.</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">Acerca de</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="hero-subtitle">Bienvenido a mi portafolio</p>
+                    <h1 class="hero-title">Desarrollo de Software <br><span class="highlight">&amp; Bases de Datos</span></h1>
+                    <p class="hero-description">
+                        Especializado en el diseño y desarrollo de soluciones de software,
+                        bases de datos relacionales y sistemas de gestion empresarial.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
+                        <a href="https://github.com/hubetcardenasi/Portafolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">Acerca de</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Este portafolio presenta proyectos enfocados en el desarrollo de bases de datos
+                            relacionales y sistemas de gestion para empresas. Cada proyecto incluye documentacion
+                            detallada, diagramas, scripts SQL y videos educativos que explican el proceso
+                            de analisis, diseno e implementacion.
+                        </p>
+                        <div class="skills">
+                            <span class="skill-tag">SQL Server</span>
+                            <span class="skill-tag">Bases de Datos</span>
+                            <span class="skill-tag">Analisis de Sistemas</span>
+                            <span class="skill-tag">Diseno ER</span>
+                            <span class="skill-tag">Stored Procedures</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Proyectos</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 7V4h16v3M9 20h6M12 4v16"/>
+                                    <rect x="2" y="7" width="20" height="6" rx="1"/>
+                                </svg>
+                            </div>
+                            <div class="project-links">
+                                <a href="SGI/PyME/Images/ER.png" target="_blank" title="Ver Diagrama ER" class="project-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Sistema de Gestion de Inventarios</h3>
+                        <p class="project-subtitle">PyME - Pequena y Mediana Empresa</p>
+                        <p class="project-description">
+                            Base de datos relacional para gestionar inventario de productos,
+                            proveedores y movimientos de stock de forma eficiente y segura.
+                        </p>
+                        <div class="project-features">
+                            <ul>
+                                <li>Gestion de usuarios y roles</li>
+                                <li>Catalogo de productos y categorias</li>
+                                <li>Control de proveedores</li>
+                                <li>Seguimiento de movimientos de inventario</li>
+                                <li>Alertas de bajo stock</li>
+                                <li>Reportes y procedimientos almacenados</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">SQL Server</span>
+                            <span class="tag">T-SQL</span>
+                            <span class="tag">Stored Procedures</span>
+                            <span class="tag">Views</span>
+                        </div>
+                        <div class="project-resources">
+                            <h4>Recursos</h4>
+                            <div class="resource-links">
+                                <a href="https://www.youtube.com/playlist?list=PLf03vPJLEOIWIBSw8-gBftN8FZsCcZZ-a" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                    Playlist Completa
+                                </a>
+                                <a href="https://youtu.be/Gul1yTHbNu0" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polygon points="10 8 16 12 10 16 10 8"/>
+                                    </svg>
+                                    Analisis y Diseno
+                                </a>
+                                <a href="https://youtu.be/DwmBLSr5jgw" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polygon points="10 8 16 12 10 16 10 8"/>
+                                    </svg>
+                                    Implementacion
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <div class="contact-content">
+                    <p class="contact-text">
+                        Interesado en colaborar o conocer mas sobre estos proyectos?
+                        Visita mi repositorio en GitHub.
+                    </p>
+                    <a href="https://github.com/hubetcardenasi/Portafolio" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Ver en GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 HCI Portafolio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
