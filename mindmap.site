@@ -1,0 +1,10 @@
+mi-proyecto/
+├── index.html         (El esqueleto principal)
+├── css/               (Estilos)
+│   ├── style.css
+│   └── main.css
+├── js/                (Lógica)
+│   ├── app.js
+│しかし   └── utils.js
+├── img/               (Imágenes y recursos)
+└── assets/            (Fuentes, iconos, etc.)
