@@ -151,7 +151,7 @@ ul {
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 100%;
 }
 
 .hero-subtitle {
@@ -179,7 +179,7 @@ ul {
     font-size: 1.125rem;
     color: var(--color-text-light);
     margin-bottom: 32px;
-    max-width: 540px;
+    max-width: 100%;
 }
 
 .hero-buttons {
@@ -217,7 +217,7 @@ section {
 }
 
 .about-text {
-    max-width: 700px;
+    max-width: 100%;
 }
 
 .about-text p {
