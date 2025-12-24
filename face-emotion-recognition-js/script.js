@@ -1,4 +1,4 @@
-const MODEL_URL = '/face-emotion-recognition-models/';
+const MODEL_URL = 'face-emotion-recognition-models/';
 
 (async () => {
     await faceapi.loadSsdMobilenetv1Model(MODEL_URL)

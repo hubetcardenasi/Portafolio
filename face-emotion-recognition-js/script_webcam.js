@@ -7,7 +7,7 @@ const canvas = document.getElementById('overlay');
 })();
 
 async function onPlay() {
-    const MODEL_URL = '/face-emotion-recognition-models/';
+    const MODEL_URL = 'face-emotion-recognition-models/';
 
     await faceapi.loadSsdMobilenetv1Model(MODEL_URL)
     await faceapi.loadFaceLandmarkModel(MODEL_URL)
