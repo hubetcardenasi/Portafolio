@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Face Emotion Recognition - Webcam</title>
+
+        <script src="face-emotion-recognition-js/face-api.min.js"></script>
+        <link rel="stylesheet" href="face-emotion-recognition-css/style-webcam.css">
+    </head>
+
+    <body>
+        <div style="position: relative">
+            <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+            <canvas id="overlay">
+        </div>
+
+        <script src="face-emotion-recognition-js/script_webcam.js"></script>
+    </body>
+
+</html>

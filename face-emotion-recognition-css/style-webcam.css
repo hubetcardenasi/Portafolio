@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+video {
+    position: absolute;
+    z-index: 1;
+}
+
+canvas {
+    position: relative;
+    z-index: 20;
+}
