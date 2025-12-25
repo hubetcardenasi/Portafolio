@@ -1,11 +1,6 @@
-# Sistema de Gestión de Inventarios
+# Portafolio profesional
 
-Diseñar y desarrollar una base datos relacional que permita a una pequeña o mediana empresa PyME gestionar su inventario de productos, proveedores y movimientos de stock de forma eficiente y segura.
+Este portafolio presenta proyectos enfocados en el desarrollo de sistemas. Cada proyecto incluye documentación detallada, diagramas, código, scripts SQL y videos educativos que explican el proceso de análisis, diseño e implementación.
 
-## Sesión de videos
-[Sistema de Gestión de Inventario para una PyME: Playlist](https://www.youtube.com/playlist?list=PLf03vPJLEOIWIBSw8-gBftN8FZsCcZZ-a) 
-
-## Videos individuales
-[Sistema de Gestión de Inventario para una PyME: Análisis y Diseño](https://youtu.be/Gul1yTHbNu0) 
-
-[Sistema de Gestión de Inventario para una PyME: Implementación](https://youtu.be/DwmBLSr5jgw) 
+## Proyectos
+:link:[hubetcardenasi.github.io/Portafolio/](https://hubetcardenasi.github.io/Portafolio/)
