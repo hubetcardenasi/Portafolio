@@ -5,7 +5,7 @@ Este portafolio presenta proyectos enfocados en el desarrollo de sistemas. Cada 
 ## Proyectos
 :link:[hubetcardenasi.github.io/Portafolio/](https://hubetcardenasi.github.io/Portafolio/)
 
-## Temas relacionados
+### Temas relacionados
 - :link:[Database](https://github.com/topics/database)
 - :link:[AI](https://github.com/topics/ai)
 - :link:[Frontend](https://github.com/topics/frontend)
