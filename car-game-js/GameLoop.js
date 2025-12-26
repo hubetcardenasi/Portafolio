@@ -7,27 +7,31 @@ export class GameLoop {
         this.ui = ui;
 
         this.gameArea = document.getElementById("gameArea");
+        this.particlesLayer = document.getElementById("particlesLayer");
+
         this.obstacles = [];
         this.powerups = [];
 
-        // Velocidad base fija
         this.baseSpeed = 4;
         this.speedModifier = 1;
         this.score = 0;
         this.lives = 3;
 
-        // Estado de boost
-        this.currentBoost = null; // "Escudo", "Turbo", "Lento"
+        this.energy = 100;
+        this.energyRegenRate = 8;   // % por segundo
+        this.brakeEnergyCost = 20;  // por frenada
+        this.brakeSlowFactor = 0.5; // reduce 50% la velocidad por un corto periodo
+
+        this.currentBoost = null;
         this.boostTimeout = null;
         this.invincible = false;
 
-        // Sonidos
         this.sndPoint = new Audio("car-game-assets/point.wav");
         this.sndCrash = new Audio("car-game-assets/crash.wav");
         this.sndPower = new Audio("car-game-assets/powerup.wav");
 
-        // Control de loop
-        this.running = false; // Arranca cuando se pulsa "Iniciar"
+        this.running = false;
+        this.lastTime = performance.now();
     }
 
     getCurrentSpeed() {
@@ -39,17 +43,16 @@ export class GameLoop {
         this.running = true;
         this.spawnObstacle();
         this.spawnPowerUp();
+        this.lastTime = performance.now();
         this.loop();
     }
 
     resetState() {
-        // Limpia entidades
         this.obstacles.forEach(o => o.remove());
         this.obstacles = [];
         this.powerups.forEach(p => p.remove());
         this.powerups = [];
 
-        // Estado base
         this.score = 0;
         this.lives = 3;
         this.speedModifier = 1;
@@ -57,11 +60,12 @@ export class GameLoop {
         this.invincible = false;
         this.car.setInvincible(false);
 
+        this.energy = 100;
+        this.ui.updateEnergy(this.energy);
         this.ui.updateScore(this.score);
         this.ui.updateLives(this.lives);
         this.ui.updateBoost("Ninguno");
 
-        // Reposiciona carro
         this.car.x = 140;
         this.car.update();
     }
@@ -74,13 +78,9 @@ export class GameLoop {
 
     spawnPowerUp() {
         if (!this.running) return;
-
-        // Selección aleatoria de tipo de boost
         const types = ["shield", "turbo", "slow"];
         const type = types[Math.floor(Math.random() * types.length)];
-
         this.powerups.push(new PowerUp(this.gameArea, type));
-
         setTimeout(() => this.spawnPowerUp(), 6000);
     }
 
@@ -99,10 +99,10 @@ export class GameLoop {
             this.boostTimeout = null;
         }
 
-        // Reset a estado base
         this.speedModifier = 1;
         this.invincible = false;
         this.car.setInvincible(false);
+        this.currentBoost = null;
 
         if (type === "shield") {
             this.currentBoost = "Escudo";
@@ -114,13 +114,10 @@ export class GameLoop {
         } else if (type === "slow") {
             this.currentBoost = "Cámara lenta";
             this.speedModifier = 0.6;
-        } else {
-            this.currentBoost = null;
         }
 
         this.ui.updateBoost(this.currentBoost || "Ninguno");
 
-        // Duración de boost (3 segundos)
         if (type) {
             this.boostTimeout = setTimeout(() => {
                 this.currentBoost = null;
@@ -136,7 +133,6 @@ export class GameLoop {
 
     handleHit() {
         if (this.invincible) {
-            // Si hay escudo activo, lo consume pero no pierde vida
             this.applyBoost(null);
             return;
         }
@@ -144,9 +140,9 @@ export class GameLoop {
         this.lives--;
         this.ui.updateLives(this.lives);
         this.ui.hitEffect(this.gameArea);
+        this.spawnParticlesAtCar("255,0,0", 18);
 
         if (this.lives > 0) {
-            // Respawn suave
             this.respawnPlayer();
         } else {
             this.gameOver();
@@ -160,11 +156,9 @@ export class GameLoop {
         this.car.update();
         this.car.respawnAnimation();
 
-        // Limpia obstáculos cercanos
         this.obstacles.forEach(o => o.remove());
         this.obstacles = [];
 
-        // Invencible temporal después del respawn
         setTimeout(() => {
             this.invincible = false;
             this.car.setInvincible(false);
@@ -173,22 +167,75 @@ export class GameLoop {
 
     gameOver() {
         this.running = false;
-
-        // Limpia entidades
         this.obstacles.forEach(o => o.remove());
         this.obstacles = [];
         this.powerups.forEach(p => p.remove());
         this.powerups = [];
-
         this.ui.showGameOver(this.score);
+    }
+
+    brake() {
+        if (this.energy < this.brakeEnergyCost) return;
+        this.energy -= this.brakeEnergyCost;
+        this.ui.updateEnergy(this.energy);
+        this.car.brakeVisual();
+
+        const previousSpeedModifier = this.speedModifier;
+        this.speedModifier = previousSpeedModifier * this.brakeSlowFactor;
+
+        setTimeout(() => {
+            this.speedModifier = previousSpeedModifier;
+        }, 400);
+    }
+
+    regenEnergy(deltaSeconds) {
+        if (this.energy >= 100) return;
+        this.energy += this.energyRegenRate * deltaSeconds;
+        if (this.energy > 100) this.energy = 100;
+        this.ui.updateEnergy(this.energy);
+    }
+
+    spawnParticles(x, y, color, count = 12) {
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement("div");
+            p.classList.add("particle");
+            p.style.backgroundColor = "rgb(" + color + ")";
+
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 30 + Math.random() * 30;
+            const dx = Math.cos(angle) * distance;
+            const dy = Math.sin(angle) * distance;
+
+            p.style.setProperty("--dx", dx + "px");
+            p.style.setProperty("--dy", dy + "px");
+
+            p.style.left = x + "px";
+            p.style.top = y + "px";
+
+            this.particlesLayer.appendChild(p);
+
+            setTimeout(() => p.remove(), 600);
+        }
+    }
+
+    spawnParticlesAtCar(color, count = 12) {
+        const x = this.car.x + 20;
+        const y = 450;
+        this.spawnParticles(x, y, color, count);
     }
 
     loop() {
         if (!this.running) return;
 
+        const now = performance.now();
+        const deltaMs = now - this.lastTime;
+        const deltaSeconds = deltaMs / 1000;
+        this.lastTime = now;
+
+        this.regenEnergy(deltaSeconds);
+
         const currentSpeed = this.getCurrentSpeed();
 
-        // Actualizamos la velocidad de cada obstáculo según el modificador actual
         this.obstacles.forEach((o, i) => {
             o.speed = currentSpeed;
             o.update();
@@ -201,6 +248,7 @@ export class GameLoop {
                     this.score++;
                     this.ui.updateScore(this.score);
                     this.sndPoint.play();
+                    this.spawnParticles(o.x + 20, 520, "0,255,255", 6);
                 }
             }
 
@@ -224,6 +272,8 @@ export class GameLoop {
             if (this.detectCollision(carBox, p, { w: 40, h: 70 }, { w: 35, h: 35 })) {
                 this.sndPower.play();
                 const type = p.type;
+                this.spawnParticles(p.x + 15, p.y + 15, "0,255,0", 14);
+
                 p.remove();
                 this.powerups.splice(i, 1);
 

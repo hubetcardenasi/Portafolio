@@ -4,6 +4,10 @@ export class Car {
         this.x = 140;
         this.speed = 20;
         this.skinClass = "skin-blue";
+
+        this.jumpCount = 0;
+        this.maxJumps = 2;
+        this.isJumping = false;
     }
 
     moveLeft() {
@@ -16,6 +20,13 @@ export class Car {
         this.update();
     }
 
+    brakeVisual() {
+        this.el.style.transform = "scale(0.9)";
+        setTimeout(() => {
+            this.el.style.transform = "scale(1)";
+        }, 150);
+    }
+
     update() {
         this.el.style.left = this.x + "px";
     }
@@ -24,6 +35,22 @@ export class Car {
         this.el.classList.remove(this.skinClass);
         this.skinClass = skinClass;
         this.el.classList.add(this.skinClass);
+    }
+
+    jump() {
+        if (this.jumpCount >= this.maxJumps) return;
+
+        this.jumpCount++;
+        this.isJumping = true;
+
+        this.el.style.transform = "translateY(-50px)";
+        setTimeout(() => {
+            this.el.style.transform = "translateY(0px)";
+            this.isJumping = false;
+            setTimeout(() => {
+                this.jumpCount = 0;
+            }, 80);
+        }, 250);
     }
 
     respawnAnimation() {

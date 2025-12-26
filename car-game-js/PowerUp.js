@@ -1,7 +1,7 @@
 export class PowerUp {
     constructor(gameArea, type) {
         this.gameArea = gameArea;
-        this.type = type; // "shield", "turbo", "slow"
+        this.type = type;
 
         this.el = document.createElement("div");
         this.el.classList.add("powerup");

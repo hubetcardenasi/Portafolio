@@ -15,26 +15,35 @@
 
             <p>Elige tu skin:</p>
             <div class="skin-options">
-                <label><input type="radio" name="skin" value="skin-blue" checked> Azul</label>
-                <label><input type="radio" name="skin" value="skin-green"> Verde</label>
-                <label><input type="radio" name="skin" value="skin-red"> Rojo</label>
+                <label>
+                    <input type="radio" name="skin" value="skin-blue" data-skin-id="blue" checked>
+                    Azul (base)
+                </label>
+                <label>
+                    <input type="radio" name="skin" value="skin-green" data-skin-id="green">
+                    Verde (HighScore ≥ 50)
+                </label>
+                <label>
+                    <input type="radio" name="skin" value="skin-red" data-skin-id="red">
+                    Rojo (HighScore ≥ 100)
+                </label>
             </div>
+            <p id="skinsLockInfo" class="hint"></p>
 
             <p>Sensibilidad del swipe:</p>
             <input id="swipeSensitivity" type="range" min="10" max="120" value="40">
 
-            <p>Joystick virtual:</p>
-            <label><input type="checkbox" id="joystickToggle"> Activar joystick</label>
+            <p>Modo zurdo:</p>
+            <label><input type="checkbox" id="leftHandMode"> Controles a la izquierda</label>
+
+            <div id="missionsPanel">
+                <h3>Misiones diarias</h3>
+                <p id="missionText"></p>
+                <p id="missionStatus" class="hint"></p>
+            </div>
 
             <button id="btnStart">Iniciar</button>
-            <p class="hint">Usa ← →, swipe o botones táctiles.</p>
-        </div>
-    </div>
-
-    <!-- Joystick virtual -->
-    <div id="joystickContainer" class="hidden">
-        <div id="joystickBase">
-            <div id="joystickStick"></div>
+            <p class="hint">Usa ← →, botones, swipe, doble tap (turbo) y pulsación prolongada (escudo).</p>
         </div>
     </div>
 
@@ -56,12 +65,24 @@
             <div class="hud-item">Vidas: <span id="livesValue">3</span></div>
             <div class="hud-item">Boost: <span id="boostValue">Ninguno</span></div>
         </div>
+
+        <!-- Barra de energía -->
+        <div id="energyBar">
+            <div id="energyBarInner"></div>
+            <span id="energyText">Energía: 100%</span>
+        </div>
+
+        <!-- Partículas -->
+        <div id="particlesLayer"></div>
+
         <div id="car" class="skin-blue"></div>
     </div>
 
-    <!-- Controles móviles -->
-    <div id="mobileControls">
+    <!-- Controles táctiles inferiores -->
+    <div id="bottomControls">
         <button id="btnLeft" class="ctrl-btn">◀</button>
+        <button id="btnBrake" class="ctrl-btn brake">⧗</button>
+        <button id="btnJump" class="ctrl-btn jump">⤒</button>
         <button id="btnRight" class="ctrl-btn">▶</button>
     </div>
 
