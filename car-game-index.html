@@ -12,23 +12,29 @@
     <div id="startScreen" class="overlay">
         <div class="start-content">
             <h1 class="title-anim">Carro Evade Obstáculos</h1>
+
             <p>Elige tu skin:</p>
             <div class="skin-options">
-                <label>
-                    <input type="radio" name="skin" value="skin-blue" checked>
-                    Azul
-                </label>
-                <label>
-                    <input type="radio" name="skin" value="skin-green">
-                    Verde
-                </label>
-                <label>
-                    <input type="radio" name="skin" value="skin-red">
-                    Rojo
-                </label>
+                <label><input type="radio" name="skin" value="skin-blue" checked> Azul</label>
+                <label><input type="radio" name="skin" value="skin-green"> Verde</label>
+                <label><input type="radio" name="skin" value="skin-red"> Rojo</label>
             </div>
+
+            <p>Sensibilidad del swipe:</p>
+            <input id="swipeSensitivity" type="range" min="10" max="120" value="40">
+
+            <p>Joystick virtual:</p>
+            <label><input type="checkbox" id="joystickToggle"> Activar joystick</label>
+
             <button id="btnStart">Iniciar</button>
-            <p class="hint">Usa ← → para moverte. ¡Evita los obstáculos y recoge boosts!</p>
+            <p class="hint">Usa ← →, swipe o botones táctiles.</p>
+        </div>
+    </div>
+
+    <!-- Joystick virtual -->
+    <div id="joystickContainer" class="hidden">
+        <div id="joystickBase">
+            <div id="joystickStick"></div>
         </div>
     </div>
 
@@ -51,6 +57,12 @@
             <div class="hud-item">Boost: <span id="boostValue">Ninguno</span></div>
         </div>
         <div id="car" class="skin-blue"></div>
+    </div>
+
+    <!-- Controles móviles -->
+    <div id="mobileControls">
+        <button id="btnLeft" class="ctrl-btn">◀</button>
+        <button id="btnRight" class="ctrl-btn">▶</button>
     </div>
 
     <script type="module" src="car-game-js/main.js"></script>
