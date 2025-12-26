@@ -1,0 +1,201 @@
+/* Layout general */
+body {
+    background: radial-gradient(circle at top, #0a0a0a, #000);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Área de juego */
+#gameArea {
+    position: relative;
+    width: 320px;
+    height: 550px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,255,255,0.2);
+}
+
+/* HUD */
+#hud {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 8px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+}
+
+.hud-item {
+    white-space: nowrap;
+}
+
+/* Carro base */
+#car {
+    position: absolute;
+    bottom: 20px;
+    left: 140px;
+    width: 45px;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00eaff;
+    transition: left 0.15s ease-out, transform 0.2s ease-out, opacity 0.3s ease-out;
+}
+
+/* Skins */
+.skin-blue {
+    background: linear-gradient(135deg, #00ffea, #0077ff);
+    box-shadow: 0 0 20px #00eaff;
+}
+
+.skin-green {
+    background: linear-gradient(135deg, #00ff8c, #00c853);
+    box-shadow: 0 0 20px #00ff8c;
+}
+
+.skin-red {
+    background: linear-gradient(135deg, #ff1744, #ff9100);
+    box-shadow: 0 0 20px #ff1744;
+}
+
+/* Obstáculos */
+.obstacle {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #ff004c, #ff7b00);
+    border-radius: 10px;
+    box-shadow: 0 0 20px #ff004c;
+}
+
+/* Power-ups (boosts) base */
+.powerup {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ffffff;
+}
+
+/* Tipos de power-up */
+.powerup-shield {
+    background: linear-gradient(135deg, #00e5ff, #2979ff);
+}
+
+.powerup-turbo {
+    background: linear-gradient(135deg, #ffea00, #ffab00);
+}
+
+.powerup-slow {
+    background: linear-gradient(135deg, #b388ff, #7c4dff);
+}
+
+/* Overlays (menú inicial y game over) */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.9), #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.start-content {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 20px 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+}
+
+.title-anim {
+    font-size: 24px;
+    margin-bottom: 16px;
+    animation: floatTitle 3s infinite ease-in-out;
+}
+
+@keyframes floatTitle {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+.skin-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #00e5ff, #2979ff);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,229,255,0.6);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 15px rgba(0,229,255,0.9);
+}
+
+.hint {
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* Efecto de daño (pantalla parpadeando roja) */
+.hit-effect {
+    animation: hitFlash 0.4s ease-out;
+}
+
+@keyframes hitFlash {
+    0% { box-shadow: 0 0 0 rgba(255,0,0,0.8); }
+    50% { box-shadow: 0 0 40px rgba(255,0,0,1); }
+    100% { box-shadow: 0 0 0 rgba(255,0,0,0); }
+}
+
+/* Animación de respawn del carro */
+.respawn {
+    animation: respawnAnim 1s ease-out;
+}
+
+@keyframes respawnAnim {
+    0% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Carro invencible (parpadeo) */
+.invincible {
+    animation: invincibleBlink 0.3s linear infinite;
+}
+
+@keyframes invincibleBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}

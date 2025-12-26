@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro Evade Obstáculos - Avanzado</title>
+    <link rel="stylesheet" href="car-game-css/style.css">
+</head>
+<body>
+
+    <!-- Menú inicial animado -->
+    <div id="startScreen" class="overlay">
+        <div class="start-content">
+            <h1 class="title-anim">Carro Evade Obstáculos</h1>
+            <p>Elige tu skin:</p>
+            <div class="skin-options">
+                <label>
+                    <input type="radio" name="skin" value="skin-blue" checked>
+                    Azul
+                </label>
+                <label>
+                    <input type="radio" name="skin" value="skin-green">
+                    Verde
+                </label>
+                <label>
+                    <input type="radio" name="skin" value="skin-red">
+                    Rojo
+                </label>
+            </div>
+            <button id="btnStart">Iniciar</button>
+            <p class="hint">Usa ← → para moverte. ¡Evita los obstáculos y recoge boosts!</p>
+        </div>
+    </div>
+
+    <!-- Overlay Game Over -->
+    <div id="gameOverScreen" class="overlay hidden">
+        <div class="start-content">
+            <h2>Game Over</h2>
+            <p id="finalScoreText"></p>
+            <p id="finalHighScoreText"></p>
+            <button id="btnRestart">Reintentar</button>
+        </div>
+    </div>
+
+    <!-- Área de juego -->
+    <div id="gameArea">
+        <div id="hud">
+            <div class="hud-item">Puntos: <span id="scoreValue">0</span></div>
+            <div class="hud-item">High Score: <span id="highScoreValue">0</span></div>
+            <div class="hud-item">Vidas: <span id="livesValue">3</span></div>
+            <div class="hud-item">Boost: <span id="boostValue">Ninguno</span></div>
+        </div>
+        <div id="car" class="skin-blue"></div>
+    </div>
+
+    <script type="module" src="car-game-js/main.js"></script>
+</body>
+</html>
