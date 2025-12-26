@@ -22,9 +22,9 @@ export class GameLoop {
         this.invincible = false;
 
         // Sonidos
-        this.sndPoint = new Audio("../car-game-assets/point.wav");
-        this.sndCrash = new Audio("../car-game-assets/crash.wav");
-        this.sndPower = new Audio("../car-game-assets/powerup.wav");
+        this.sndPoint = new Audio("car-game-assets/point.wav");
+        this.sndCrash = new Audio("car-game-assets/crash.wav");
+        this.sndPower = new Audio("car-game-assets/powerup.wav");
 
         // Control de loop
         this.running = false; // Arranca cuando se pulsa "Iniciar"
