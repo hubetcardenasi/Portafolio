@@ -7,6 +7,7 @@
     <title>Portafolio Profesional | HCI</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://hubetcardenasi.github.io/Volado/web/css/style-popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -593,6 +594,13 @@
                                     Ir a Volado
                                 </a>
 
+                                <a href="#" onclick="mostrarPopup(); return false;" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 18L15 12L9 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Mostrar animación
+                                </a>
+
                                 <a href="https://github.com/hubetcardenasi/Volado" target="_blank" rel="noopener noreferrer" class="resource-link">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M9 18L15 12L9 6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -630,5 +638,16 @@
             <p>&copy; 2025 HCI Portafolio. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup">
+    <div class="popup-content">
+        <img src="https://hubetcardenasi.github.io/Volado/web/assets/volado_animacion.gif" alt="Animación de aplicación Volado" class="project-image" width="180" style="border-radius: 12px;">
+        <p style="color:white; margin-top: 12px;">Procesando...</p>
+        <button class="popup-btn" onclick="cerrarPopup()">Cerrar</button>
+    </div>
+    </div>
+
+    <script src="https://hubetcardenasi.github.io/Volado/web/js/app.js"></script>
 </body>
 </html>
